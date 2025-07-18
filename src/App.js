@@ -1,24 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from './login';
+import Register from './register';
+import Profile from './profile';
+import Students from './student';
+import Teachers from './teacher';
+import Subjects from './subject';
+import Classrooms from './classroom';
+import Grades from './grade';
+import Timetables from './timetable';
+import Attendance from './attendance';
+import WaitingApproval from './waitingapproval';
+import ModOption from './modOption';
+import ModeratorDashboard from './moderatordashboard';
+import StudentDashboard from './studentdashboard';
+import TeacherDashboard from './teacherdashboard';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/login/" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/students" element={<Students />} />
+        <Route path="/teachers" element={<Teachers />} />
+        <Route path="/subjects" element={<Subjects />} />
+        <Route path="/classrooms" element={<Classrooms />} />
+        <Route path="/grades" element={<Grades />} />
+        <Route path="/timetable" element={<Timetables />} />
+        <Route path="/attendance" element={<Attendance />} />
+        <Route path="/waitingapproval" element={<WaitingApproval />} />
+        <Route path="/modoption" element={<ModOption />} />
+        <Route path="/moderator-dashboard" element={<ModeratorDashboard />} />
+        <Route path="/student-dashboard" element={<StudentDashboard />} />
+        <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
+
+
+      </Routes>
+    </Router>
   );
 }
 
