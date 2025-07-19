@@ -45,7 +45,7 @@ const ModeratorDashboard = () => {
         console.error(err);
         setError('Failed to load users.');
       });
-  }, []);
+  }, [navigate,token]);
 
   const deleteUser = (id) => {
     fetch(`http://localhost:8000/api/manage-users/${id}/`, {

@@ -19,7 +19,7 @@ const StudentDashboard = () => {
   })
       .catch(() => setError('Failed to fetch student info.'));
 
-  }, []);
+  }, [token]);
 
   return (
     <div className={`container-fluid min-vh-100 py-5 ${darkMode ? 'bg-dark text-light' : 'bg-light text-dark'}`}>

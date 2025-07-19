@@ -6,8 +6,7 @@ const Students = () => {
   const [loading, setLoading] = useState(true);
   const role = localStorage.getItem('role');
   const navigate = useNavigate();
-  const token = localStorage.getItem('accessToken');
-  const firstname = localStorage.getItem('first_name');
+
 
   useEffect(() => {
     const fetchStudents = async () => {
