@@ -14,6 +14,46 @@ const Profile = () => {
   const [newPassword, setNewPassword] = useState('');
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
+  const styles = {
+    container: {
+      minHeight: '100vh',
+      backgroundColor: '#f4f6f8',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    card: {
+      width: 400,
+      backgroundColor: '#fff',
+      padding: 30,
+      borderRadius: 10,
+      boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+    },
+    form: {
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    label: {
+      marginTop: 12,
+      marginBottom: 6,
+      fontWeight: 'bold',
+    },
+    input: {
+      padding: 10,
+      marginBottom: 12,
+      borderRadius: 5,
+      border: '1px solid #ccc',
+    },
+    button: {
+      padding: 12,
+      backgroundColor: '#007bff',
+      color: '#fff',
+      border: 'none',
+      borderRadius: 6,
+      cursor: 'pointer',
+      fontWeight: 'bold',
+    },
+  };
 
   const handleLogout = () => {
     localStorage.clear();
