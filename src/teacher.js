@@ -1,6 +1,7 @@
 // src/teachers.js
 import React, { useEffect, useState } from "react";
 import apiUrl from "./utils/api";
+import { Link } from "react-router-dom";
 
 function Teachers() {
   const [teachers, setTeachers] = useState([]);
