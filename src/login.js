@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
+import apiUrl from './utils/api';
 
 const Login = () => {
   const [formData, setFormData] = useState({ username: '', password: '' });
@@ -26,7 +27,7 @@ const Login = () => {
   setError('');
 
   try {
-    const response = await fetch('http://localhost:8000/api/login/', {
+    const response = await fetch(`${apiUrl}/api/login/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

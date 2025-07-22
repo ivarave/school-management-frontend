@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import apiUrl from "./utils/api";
 
 const StudentDashboard = () => {
   const [darkMode] = useState(false);
@@ -9,7 +10,7 @@ const StudentDashboard = () => {
   const token = localStorage.getItem('accessToken');
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/student-info/', {
+    fetch(`${apiUrl}/api/student-info/`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then(res => res.json())

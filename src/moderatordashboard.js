@@ -1,6 +1,7 @@
 // src/moderatordashboard.js
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import apiUrl from './utils/api';
 
 const ModeratorDashboard = () => {
   const [users, setUsers] = useState([]);
@@ -27,7 +28,7 @@ const ModeratorDashboard = () => {
       return;
     }
 
-    fetch('http://localhost:8000/api/manage-users/', {
+    fetch(`${apiUrl}/api/manage-users/`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -48,7 +49,7 @@ const ModeratorDashboard = () => {
   }, [navigate,token]);
 
   const deleteUser = (id) => {
-    fetch(`http://localhost:8000/api/manage-users/${id}/`, {
+    fetch(`${apiUrl}/api/manage-users/${id}/`, {
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -66,7 +67,7 @@ const ModeratorDashboard = () => {
   const createUser = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('http://localhost:8000/api/register/', {
+      const res = await fetch(`${apiUrl}/api/register/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -106,7 +107,7 @@ const ModeratorDashboard = () => {
   };
 
   const updateUser = () => {
-    fetch(`http://localhost:8000/api/manage-users/${editingUser}/`, {
+    fetch(`${apiUrl}/api/manage-users/${editingUser}/`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

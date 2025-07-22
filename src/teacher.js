@@ -1,11 +1,12 @@
 // src/teachers.js
 import React, { useEffect, useState } from "react";
+import apiUrl from "./utils/api";
 
 function Teachers() {
   const [teachers, setTeachers] = useState([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/teacher-info/", {
+    fetch(`${apiUrl}/api/teacher-info/`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

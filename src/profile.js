@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import apiUrl from './utils/api';
 
 const Profile = () => {
   const username = localStorage.getItem('username');
@@ -26,7 +27,7 @@ const Profile = () => {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:8000/api/change-password/', {
+      const response = await fetch(`${apiUrl}/api/change-password/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

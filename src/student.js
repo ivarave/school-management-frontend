@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import apiUrl from './utils/api';
 
 const Students = () => {
   const [students, setStudents] = useState([]);
@@ -12,7 +13,7 @@ const Students = () => {
     const fetchStudents = async () => {
       try {
         const token = localStorage.getItem('accessToken');
-        const response = await fetch('http://localhost:8000/api/students/', {
+        const response = await fetch(`${apiUrl}/api/students/`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
