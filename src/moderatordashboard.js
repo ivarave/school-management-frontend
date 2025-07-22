@@ -223,6 +223,7 @@ const ModeratorDashboard = () => {
                   <select name="role" value={editedData.role} onChange={handleEditChange}>
                     <option value="student">Student</option>
                     <option value="teacher">Teacher</option>
+                    
                     <option value="moderator">Moderator</option>
                   </select>
                 ) : (
