@@ -1,3 +1,4 @@
+console.log('App loaded');
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './login';
 import Register from './register';
