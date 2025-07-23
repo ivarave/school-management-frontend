@@ -8,7 +8,23 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  
+  // Redirect if already logged in
+  useEffect(() => {
+    const token = localStorage.getItem('accessToken');
+    const role = localStorage.getItem('role');
+
+    if (token && role) {
+      if (role === 'moderator') {
+        navigate('/modoption');
+      } else if (role === 'teacher') {
+        navigate('/teacher-dashboard');
+      } else if (role === 'student') {
+        navigate('/student-dashboard');
+      }
+    }
+  }, [navigate]);
+
+  // Prefill username (e.g., from register page redirect)
   useEffect(() => {
     if (location.state?.prefillUsername) {
       setFormData((prev) => ({
@@ -23,51 +39,53 @@ const Login = () => {
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  setError('');
+    e.preventDefault();
+    setError('');
 
-  try {
-    const response = await fetch(`${apiUrl}/api/login/`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
+    try {
+      const response = await fetch(`${apiUrl}/api/login/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-    const data = await response.json();
+      const data = await response.json();
 
-    if (response.ok) {
-      localStorage.setItem('accessToken', data.access);
-      localStorage.setItem('role', data.role);
-      localStorage.setItem('username', data.username);
-    } else {
-      if (data.detail === 'Moderator account is pending approval') {
-        navigate('/waiting-approval');
+      if (response.ok) {
+        localStorage.setItem('accessToken', data.access);
+        localStorage.setItem('role', data.role);
+        localStorage.setItem('username', data.username);
+
+        if (data.role === 'moderator') {
+          navigate('/modoption');
+        } else if (data.role === 'student') {
+          navigate('/student-dashboard');
+        } else if (data.role === 'teacher') {
+          navigate('/teacher-dashboard');
+        }
       } else {
-        setError(data.detail || 'Login failed');
+        if (data.detail === 'Moderator account is pending approval') {
+          navigate('/waiting-approval');
+        } else {
+          setError(data.detail || 'Login failed');
+        }
       }
+    } catch (err) {
+      setError('Something went wrong. Try again.');
     }
-    if (data.role === 'moderator') {
-      navigate('/modoption');
-    } else if (data.role === 'student') {
-      navigate('/student-dashboard');
-    } else if (data.role === 'teacher') {
-      navigate('/teacher-dashboard');
-    }
-  } catch (err) {
-    setError('Something went wrong. Try again.');
-  }
-};
-
+  };
 
   return (
     <div style={styles.container}>
       <div style={styles.card}>
         <h2 style={{ marginBottom: 20 }}>Login</h2>
 
-        {location.state?.successMessage && (<p style={{ color: 'green' }}>{location.state.successMessage}</p>)}
-      
+        {location.state?.successMessage && (
+          <p style={{ color: 'green' }}>{location.state.successMessage}</p>
+        )}
+
         {error && <p style={{ color: 'red' }}>{error}</p>}
 
         <form onSubmit={handleSubmit} style={styles.form}>
