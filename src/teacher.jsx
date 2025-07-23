@@ -11,7 +11,7 @@ function Teachers() {
   useEffect(() => {
     const fetchTeachers = async () => {
       try {
-        const token = localStorage.getItem("accessToken"); // match how student.jsx gets token
+        const token = localStorage.getItem("accessToken");
         const response = await fetch(`${apiUrl}/api/teacher-info/`, {
           headers: {
             Authorization: `Bearer ${token}`,
