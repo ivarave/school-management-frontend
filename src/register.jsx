@@ -43,7 +43,7 @@ const Register = () => {
     };
 
     try {
-      const response = await fetch(`${apiUrl}/register/`, {
+      const response = await fetch(`${apiUrl}/api/register/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(submissionData),
