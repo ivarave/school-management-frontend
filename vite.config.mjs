@@ -1,6 +1,6 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import { viteStaticCopy } from 'vite-plugin-static-copy'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 export default defineConfig({
   plugins: [
@@ -8,14 +8,10 @@ export default defineConfig({
     viteStaticCopy({
       targets: [
         {
-          src: '_redirects',
-          dest: '.', // put inside dist/
-        }
-      ]
-    })
+          src: 'public/_redirects',  // copy from public/
+          dest: '.'                 // copy to dist/
+        },
+      ],
+    }),
   ],
-  build: {
-    outDir: 'dist',
-  },
-  base: '/',
-})
+});
