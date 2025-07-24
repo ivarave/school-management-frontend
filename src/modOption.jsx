@@ -1,4 +1,4 @@
-// src/pages/modoption.js
+// src/pages/modoption.jsx
 
 import React from 'react';
 import { useNavigate } from 'react-router-dom';

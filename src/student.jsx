@@ -46,6 +46,11 @@ const Students = () => {
           ← Back to Dashboard
         </button>
       ) : null}
+      {role === 'moderator' ? (
+        <button className="btn btn-secondary mb-3" onClick={() => navigate(-1)}>
+          ← Back to Dashboard
+        </button>
+      ) : null}
 
       <h2 className="mb-4">📚 Students</h2>
 

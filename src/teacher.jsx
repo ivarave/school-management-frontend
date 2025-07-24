@@ -12,18 +12,21 @@ function Teachers() {
     const fetchTeachers = async () => {
       try {
         const token = localStorage.getItem("accessToken");
-        const response = await fetch(`${apiUrl}/api/teacher-info/`, {
+        const response = await fetch(`${apiUrl}/api/teachers/`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
 
-        if (response.ok) {
-          const data = await response.json();
-          setTeachers(data);
-        } else {
+        if (!response.ok) {
           console.error("Failed to fetch teachers");
+          setLoading(false);
+          return;
         }
+
+        const data = await response.json();
+        console.log("Fetched teachers payload:", data);
+        setTeachers(Array.isArray(data) ? data : []);
       } catch (error) {
         console.error("Error fetching teachers:", error);
       } finally {
@@ -45,6 +48,11 @@ function Teachers() {
           ← Back to Dashboard
         </button>
       ) : null}
+      {role === 'moderator' ? (
+        <button className="btn btn-secondary mb-3" onClick={() => navigate(-1)}>
+          ← Back to Dashboard
+        </button>
+      ) : null}
 
       <h2 className="mb-4">👩‍🏫 Teachers</h2>
 
@@ -57,8 +65,8 @@ function Teachers() {
           <thead>
             <tr>
               <th>ID</th>
-              <th>First name</th>
-              <th>Last name</th>
+              <th>First Name</th>
+              <th>Last Name</th>
               <th>Username</th>
               <th>Email</th>
               <th>Role</th>
@@ -68,11 +76,11 @@ function Teachers() {
             {teachers.map((teacher) => (
               <tr key={teacher.id}>
                 <td>{teacher.id}</td>
-                <td>{teacher.first_name}</td>
-                <td>{teacher.last_name}</td>
-                <td>{teacher.username}</td>
-                <td>{teacher.email}</td>
-                <td>{teacher.role}</td>
+                <td>{teacher.first_name || 'N/A'}</td>
+                <td>{teacher.last_name || 'N/A'}</td>
+                <td>{teacher.teacher_id || 'N/A'}</td>
+                <td>{teacher.email || 'N/A'}</td>
+                <td>{teacher.role || 'N/A'}</td>
               </tr>
             ))}
           </tbody>

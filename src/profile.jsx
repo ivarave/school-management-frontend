@@ -102,6 +102,11 @@ const Profile = () => {
             ← Back to Dashboard
           </button>
         ) : null}
+        {role === 'moderator' ? (
+          <button className="btn btn-secondary mb-3" onClick={() => navigate('/modoption')} style={{ ...styles.button, backgroundColor: '#808080',marginTop:10, marginLeft: 10 }}>
+            ← Back to Admin Panel
+          </button>
+        ) : null}
 
       </div>
     </div>
