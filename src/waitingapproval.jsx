@@ -1,5 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import apiUrl from './utils/api';
+
+
+const username = localStorage.getItem('username');
+const token = localStorage.getItem('accessToken');
+const role = localStorage.getItem('role');
+
 
 const WaitingApproval = () => {
   return (
@@ -19,7 +26,7 @@ const WaitingApproval = () => {
         textAlign: 'center'
       }}>
         <h2>Awaiting Approval</h2>
-        <p>Your moderator account is pending approval by an admin.</p>
+        <p>Your moderator account {username} is pending approval by an admin.</p>
         <p>Please check back later.</p>
         <p>Redirect to <Link to= "/login">Login</Link> </p>
       </div>

@@ -49,7 +49,7 @@ const StudentDashboard = () => {
   };
 
   const handleModOption = () => {
-    navigate('/modoption');
+    navigate('/moderator-dashboard');
   };
 
   return (
@@ -100,7 +100,7 @@ const StudentDashboard = () => {
             { path: "/classrooms", title: "🏫 Classrooms", text: "View your classroom arrangement.", color: "danger" },
             { path: "/timetable", title: "📅 Timetable", text: "View class schedules.", color: "info" },
             { path: "/attendance", title: "✅ Attendance", text: "Track daily attendance records.", color: "warning", textColor: "text-dark" },
-            { path: "/grades", title: "🏅 Grades", text: "View your grades.", color: "dark", textColor: "text-light" },
+            { path: "/studentsgrade", title: "🏅 Grades", text: "View your grades.", color: "dark", textColor: "text-light" },
           ].map(({ path, title, text, color, textColor = "text-white" }, idx) => (
             <div className="col" key={idx}>
               <Link to={path} className="text-decoration-none">

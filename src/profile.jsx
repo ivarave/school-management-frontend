@@ -51,8 +51,18 @@ const Profile = () => {
   };
 
   return (
+
+
     <div style={styles.container}>
       <div style={styles.card}>
+        <div style={{ textAlign: 'right', marginBottom: -30 }}>
+          <button onClick={() => navigate(-1)} className="btn btn-outline-">
+            ❌
+          </button>
+        </div>
+
+
+
         <h2>Profile</h2>
 
         <p><strong>Username:</strong> {username}</p>
@@ -88,28 +98,11 @@ const Profile = () => {
           <button type="submit" style={styles.button}>Change Password</button>
         </form>
 
-        <button onClick={handleLogout} style={{ ...styles.button, backgroundColor: '#dc3545', marginTop: 20 }}>
-          Logout
-        </button>
-        
-        
-          {role === 'teacher' ? (
-          <button className="btn btn-secondary mb-3" onClick={() => navigate('/teacher-dashboard')} style={{ ...styles.button, backgroundColor: '#808080',marginTop:10, marginLeft: 10 }}>
-            ← Back to Dashboard
-          </button>
-        ) : role === 'student' ? (
-          <button className="btn btn-secondary mb-3" onClick={() => navigate('/student-dashboard')} style={{ ...styles.button, backgroundColor: '#808080',marginTop:10, marginLeft: 10 }}>
-            ← Back to Dashboard
-          </button>
-        ) : null}
-        {role === 'moderator' ? (
-          <button className="btn btn-secondary mb-3" onClick={() => navigate('/modoption')} style={{ ...styles.button, backgroundColor: '#808080',marginTop:10, marginLeft: 10 }}>
-            ← Back to Admin Panel
-          </button>
-        ) : null}
+
 
       </div>
     </div>
+
   );
 };
 

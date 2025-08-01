@@ -15,7 +15,7 @@ const Login = () => {
 
     if (token && role) {
       if (role === 'moderator') {
-        navigate('/modoption');
+        navigate('/moderator-dashboard');
       } else if (role === 'teacher') {
         navigate('/teacher-dashboard');
       } else if (role === 'student') {
@@ -59,7 +59,7 @@ const Login = () => {
         localStorage.setItem('username', data.username);
 
         if (data.role === 'moderator') {
-          navigate('/modoption');
+          navigate('/moderator-dashboard');
         } else if (data.role === 'student') {
           navigate('/student-dashboard');
         } else if (data.role === 'teacher') {

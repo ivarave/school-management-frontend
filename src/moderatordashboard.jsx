@@ -1,13 +1,15 @@
-// src/moderatordashboard.js
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import apiUrl from './utils/api';
 
 const ModeratorDashboard = () => {
   const [users, setUsers] = useState([]);
+  const [students, setStudents] = useState([]);
   const [error, setError] = useState('');
   const [showForm, setShowForm] = useState(false);
   const [newUser, setNewUser] = useState({
+    firstName: '',
+    lastName: '',
     username: '',
     email: '',
     password: '',
@@ -20,6 +22,7 @@ const ModeratorDashboard = () => {
 
   const navigate = useNavigate();
   const token = localStorage.getItem('accessToken');
+  const username = localStorage.getItem('username');
 
   useEffect(() => {
     if (!token) {
@@ -48,6 +51,25 @@ const ModeratorDashboard = () => {
       });
   }, [navigate,token]);
 
+  const fetchStudents = async () => {
+    if (role !== 'teacher', 'moderator','student') {
+      try {
+        const response = await axios.get(`${apiUrl}/api/students/`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        setStudents(response.data);
+      } catch (error) {
+        console.error('Error fetching students:', error);
+      }
+    }
+  };
+
+
+  
+
+
+
+
   const deleteUser = (id) => {
     fetch(`${apiUrl}/api/manage-users/${id}/`, {
       method: 'DELETE',
@@ -58,6 +80,11 @@ const ModeratorDashboard = () => {
       setUsers(users.filter((user) => user.id !== id));
       setActionRow(null);
     });
+  };
+  const handleLogout = () => {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('username');
+    navigate('/login');
   };
 
   const handleNewUserChange = (e) => {
@@ -81,7 +108,7 @@ const ModeratorDashboard = () => {
       if (res.ok) {
         alert('User created successfully');
         setUsers([...users, data]);
-        setNewUser({ username: '', email: '', password: '', role: 'student' });
+        setNewUser({ firstName:'', lastName:'', username: '', email: '', password: '', role: 'student' });
         setShowForm(false);
       } else {
         alert(data.error || 'Error creating user');
@@ -95,6 +122,8 @@ const ModeratorDashboard = () => {
   const handleEditClick = (user) => {
     setEditingUser(user.id);
     setEditedData({
+      firstName: user.first_name,
+      lastName: user.last_name,
       username: user.username,
       email: user.email,
       role: user.role
@@ -132,6 +161,15 @@ const ModeratorDashboard = () => {
         setEditingUser(null);
         setEditedData({ username: '', email: '', role: '' });
         setActionRow(null);
+        setStudents(students.map((s) => {
+          if (s.id === data.id) {
+            return { ...s, username: data.username, email: data.email, role: data.role };
+          }
+          return s;
+            ;
+        }));
+        
+
       })
       .catch((err) => {
         console.error(err);
@@ -142,42 +180,57 @@ const ModeratorDashboard = () => {
   return (
     <div style={styles.container}>
       <h2 style={styles.title}>Moderator Dashboard</h2>
-
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
-      <button
-        onClick={() => setShowForm(!showForm)}
-        style={{
-          backgroundColor: showForm ? '#dc3545' : '#28a745',
-          color: '#fff',
-          padding: '10px 20px',
-          border: 'none',
-          borderRadius: '5px',
-          cursor: 'pointer',
-          marginBottom: '1rem',
-        }}
-      >
-        {showForm ? 'Cancel' : 'Create New User'}
-      </button>
+      <div className="d-flex align-items-center flex-wrap mb-3">
+        <button
+          className="btn btn-outline-success fw-bold"
+          onClick={() => setShowForm(!showForm)}
+        >
+          {showForm ? 'Cancel' : 'Create New User'}
+        </button>
 
-      <button
-        onClick={() => navigate('/modOption')}
-        style={{
-          marginLeft: '550px',
-          backgroundColor: '#808080',
-          color: '#fff',
-          padding: '10px 20px',
-          border: 'none',
-          borderRadius: '5px',
-          cursor: 'pointer',
-          marginBottom: '1rem',
-        }}
-      >
-        Back to Admin Panel
-      </button>
+        <div className="d-flex align-items-center gap-2 ms-auto">
+          <Link
+            to="/profile"
+            onClick={() => navigate('/student-dashboard')}
+            className="btn btn-outline-secondary fw-bold"
+          >
+            Hi, {username} 👋
+          </Link>
+
+          <button
+            onClick={() => navigate('/student-dashboard')}
+            className="btn btn-outline-primary fw-bold"
+          >
+            Student View
+          </button>
+
+          <button
+            onClick={() => navigate('/teacher-dashboard')}
+            className="btn btn-outline-primary fw-bold"
+          >
+            Teacher View
+          </button>
+
+          <button
+            onClick={handleLogout}
+            className="btn btn-outline-danger fw-bold"
+          >
+            Logout
+          </button>
+        </div>
+      </div>
+
+
+      
+
+
 
       {showForm && (
         <form onSubmit={createUser} style={styles.form}>
+          <input type="text" name="firstName" placeholder='First Name' value={newUser.firstName} onChange={handleNewUserChange} required/>
+          <input type="text" name="lastName" placeholder='Last Name' value={newUser.lastName} onChange={handleNewUserChange} required/>
           <input type="text" name="username" placeholder="Username" value={newUser.username} onChange={handleNewUserChange} required />
           <input type="email" name="email" placeholder="Email" value={newUser.email} onChange={handleNewUserChange} required />
           <input type="password" name="password" placeholder="Password" value={newUser.password} onChange={handleNewUserChange} required />
@@ -194,6 +247,8 @@ const ModeratorDashboard = () => {
         <thead>
           <tr style={styles.headerRow}>
             <th style={styles.th}>ID</th>
+            <th style={styles.th}>First Name</th>
+            <th style={styles.th}>Last Name</th>
             <th style={styles.th}>Username</th>
             <th style={styles.th}>Email</th>
             <th style={styles.th}>Role</th>
@@ -204,6 +259,8 @@ const ModeratorDashboard = () => {
           {users.map((u) => (
             <tr key={u.id}>
               <td style={styles.td}>{u.id}</td>
+              <td style={styles.td}>{u.first_name}</td>
+              <td style={styles.td}>{u.last_name}</td>
               <td style={styles.td}>
                 {editingUser === u.id ? (
                   <input type="text" name="username" value={editedData.username} onChange={handleEditChange} />

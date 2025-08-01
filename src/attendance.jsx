@@ -1,5 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import apiUrl from './utils/api';
+
 
 const Attendance = () => {
   const navigate = useNavigate();
@@ -14,7 +16,14 @@ const Attendance = () => {
         <button className="btn btn-secondary mb-3" onClick={() => navigate('/student-dashboard')}>
           ← Back to Dashboard
         </button>
-      ) : null}      <h2 className="mb-4">✅ Attendance</h2>
+      ) : null}      
+      
+      {role === 'moderator' ? (
+        <button className="btn btn-secondary mb-3" onClick={() => navigate(-1)}>
+          ← Back to Dashboard
+        </button>
+      ) : null} 
+      <h2 className="mb-4">✅ Attendance</h2>
       <p>This is where attendance data will be displayed.</p>
     </div>
   );

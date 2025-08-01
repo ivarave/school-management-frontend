@@ -1,5 +1,6 @@
 console.log('App loaded');
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import apiUrl from './utils/api';
 import Login from './login';
 import Register from './register';
 import Profile from './profile';
@@ -15,6 +16,8 @@ import ModOption from './modOption';
 import ModeratorDashboard from './moderatordashboard';
 import StudentDashboard from './studentdashboard';
 import TeacherDashboard from './teacherdashboard';
+import TeachersGrade from './teachersgrade';
+import StudentsGrade from './studentsgrade';
 
 function App() {
   return (
@@ -36,6 +39,9 @@ function App() {
         <Route path="/moderator-dashboard" element={<ModeratorDashboard />} />
         <Route path="/student-dashboard" element={<StudentDashboard />} />
         <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
+        <Route path="/teachersgrade" element={<TeachersGrade />} />
+        <Route path="/studentsgrade" element={<StudentsGrade />} />
+        <Route path="/grade" element={< Grades />} />
 
 
       </Routes>

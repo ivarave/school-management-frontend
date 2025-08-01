@@ -56,6 +56,7 @@ const Register = () => {
 
         if (formData.role === 'moderator') {
           setPending(true);
+          setTimeout(() => navigate('/waitingapproval'), 3000);
         } else {
           setTimeout(() => navigate('/login', {
             state: {
