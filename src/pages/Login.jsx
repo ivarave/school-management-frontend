@@ -4,7 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
 import "../styles/login.css";
 import axios from "axios";
-import Darkmode from "../components/Darkmode";
+import DarkMode from "../components/DarkMode";
 
 function Login({ onLoginSuccess }) {
   const [formData, setFormData] = useState({
