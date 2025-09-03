@@ -1,7 +1,9 @@
-staticSites:
-  - name: school-management-frontend
+services:
+  - type: web
+    name: school-management-frontend
+    env: static
     buildCommand: npm run build
-    publishPath: dist
+    staticPublishPath: dist
     routes:
       - type: rewrite
         source: /*
