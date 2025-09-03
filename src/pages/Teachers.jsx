@@ -19,7 +19,7 @@ function Teachers() {
       
 
       <main className="main">
-        <Darkmode/>
+        <DarkMode/>
         <h2>Teachers</h2>
         <table className="subjects-table">
           <thead>

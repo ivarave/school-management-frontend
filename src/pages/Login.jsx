@@ -45,7 +45,7 @@ function Login({ onLoginSuccess }) {
 
   return (
     <div className="login-container">
-      <Darkmode />
+      <DarkMode />
 
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>

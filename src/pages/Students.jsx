@@ -18,7 +18,7 @@ function Students() {
       <Sidebar />
       <main className="main">
         <h2>Students</h2>
-        <Darkmode/>
+        <DarkMode/>
 
         <table className="subjects-table">
           <thead>

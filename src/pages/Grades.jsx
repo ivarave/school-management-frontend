@@ -17,7 +17,7 @@ function Grades() {
     <div className="dashboard">
       <Sidebar />
       <main className="main">
-        <Darkmode/>
+        <DarkMode/>
         <h2>Grades</h2>
 
    

@@ -64,7 +64,7 @@ function Register(){
 
   return(
     <div className="register-container">
-      <Darkmode/>
+      <DarkMode/>
       <h2>Register</h2>
       <form onSubmit={handleSubmit}>
         <label>

@@ -60,7 +60,7 @@ function Home() {
       <Sidebar />
 
       <main className="dashboard-content">
-        <Darkmode />
+        <DarkMode />
         <header className="header">
           <h1>Dashboard</h1>
         </header>

@@ -139,7 +139,7 @@ function Subjects() {
     <div className="dashboard">
       <Sidebar />
       <main className="main">
-        <Darkmode />
+        <DarkMode />
         <h2>Subjects</h2>
 
         {/* Teacher/Moderator Section */}
