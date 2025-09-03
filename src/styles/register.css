@@ -1,0 +1,87 @@
+.register-container {
+  max-width: 400px;
+  margin: 60px auto;
+  background: var(--body_background);
+  /* border: 1px solid var(--input_borders); */
+  border-radius: 8px;
+  box-shadow: 0 4px 24px var(--input_borders);
+  padding: 32px 24px;
+  transition: background 0.3s ease, color 0.3s ease;
+
+}
+
+.register-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--primary_text);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.register-container form label {
+  display: block;
+  /* margin-bottom: 10px; */
+  color: var(--primary_text);
+  font-weight: 500;
+  margin-right: 15px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.register-container form input,
+.register-container form select {
+  width: 100%;
+  padding: 8px 12px;
+  margin-top: 4px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid var(--input_borders);
+  font-size: 14px;
+  transition: border 0.3s ease;
+  background: var(--body_background);
+  color: var(--primary_text);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.register-container form input:focus,
+.register-container form select:focus {
+  border-color: var(--primary_text);
+  outline: none;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.register-container form input[readonly] {
+  background-color: var(--body_background);
+  cursor: not-allowed;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.register-container form button {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--link_color);
+  border: none;
+  border-radius: 6px;
+  color: var(--button_text);
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.register-container form button:hover {
+  background: #0056b3;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.register-container .register-links{
+    display: flex;
+    flex-direction: column;
+    color: var(--link_color);
+    text-decoration: none;
+    margin-top: 15px;
+    font-size: 14px;
+    text-align: center;
+    gap: 10px;
+    font-weight: 500;
+    transition: background 0.3s ease, color 0.3s ease;
+    
+}
+

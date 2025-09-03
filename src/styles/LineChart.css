@@ -1,0 +1,19 @@
+/* LineChart.css */
+.line-chart-container {
+  width: 90%;
+  max-width: 700px;
+  height: 300px;
+  margin: 30px auto;
+  background: var(--card_background);
+  
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.line-chart-container canvas {
+  max-width: 100%;
+  max-height: 100%;
+}

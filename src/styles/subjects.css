@@ -1,0 +1,70 @@
+.main {
+  flex: 1;
+  background: #f5f6fa;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.subject-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.subject-form input {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #cbd5e1;
+  background: var(--container_color);
+  color: var(--primary_text);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.subject-form select {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #cbd5e1;
+  background: var(--container_color);
+  color: var(--primary_text);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+
+.subjects-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--container_color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.subjects-table th,
+.subjects-table td {
+  border: 1px solid #cbdbe1;
+  padding: 10px;
+  text-align: left;
+  
+}
+
+.subjects-table th {
+  background-color: var(--);
+}
+
+.subjects-button.enroll {
+  background-color: #22c55e;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  margin-right: 5px;
+}
+
+.subjects-button.unenroll {
+  background-color: #ef4444;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+}

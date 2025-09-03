@@ -1,0 +1,85 @@
+:root {
+  /* login and register */
+  --body_background: rgb(30, 30, 30);
+  --container_color: rgb(50, 50, 50);
+  --primary_text: rgb(200, 200, 200);
+  --secondary_color: rgb(51, 51, 51);
+  --button_color: rgb(8, 8, 8);
+  --button_text: rgb(255, 255, 255);
+  --input_fields: rgb(40, 40, 40);
+  --input_borders: rgb(51, 51, 51);
+  --link_color: rgb(47, 120, 255);
+  --login-container: rgb(20, 20, 20);
+
+  /* home dashboard */
+  --sidebar_color: rgb(0, 0, 0);
+  --sidebar_border: rgb(50, 50, 50);
+  --sidebar_text: rgb(255, 255, 255);
+  --dashboard-background: rgb(0, 0, 0);
+  --dashboard-text: rgb(255, 255, 255);
+  --logout_button: rgb(200, 0, 0);
+  --card_background: rgb(50, 50, 50);
+  --table_head: rgb(50, 50, 50);
+
+}
+
+[data-theme="light"] {
+  /* login and register */
+  --body_background: rgb(255, 255, 255);
+  --container_color: rgb(245, 245, 245);
+  --primary_text: rgb(50, 50, 50);
+  --secondary_color: rgb(100, 100, 100);
+  --button_color: rgb(0, 123, 255);
+  --button_text: rgb(255, 255, 255);
+  --input_fields: rgb(235, 235, 235);
+  --input_borders: rgb(80, 80, 80);
+  --link_color: rgb(0, 85, 240);
+  --login-container: rgb(255, 255, 255);
+
+  /* home dashboard */
+  --sidebar_color: rgb(245, 245, 245);
+  --sidebar_border: rgb(220, 220, 220);
+  --sidebar_text: rgb(30, 30, 30);
+  --dashboard-background: rgb(245, 245, 245);
+  --dashboard-text: rgb(30, 30, 30);
+  --logout_button: rgb(200, 0, 0);
+  --card_background: rgb(255, 255, 255);
+  --table_head: rgb(50, 50, 50);
+
+}
+
+[data-theme="dark"] {
+  /* login and register */
+  --body_background: rgb(30, 30, 30);
+  --container_color: rgb(50, 50, 50);
+  --primary_text: rgb(200, 200, 200);
+  --secondary_color: rgb(51, 51, 51);
+  --button_color: rgb(8, 8, 8);
+  --button_text: rgb(255, 255, 255);
+  --input_fields: rgb(40, 40, 40);
+  --input_borders: rgb(51, 51, 51);
+  --link_color: rgb(47, 120, 255);
+  --login-container: rgb(20, 20, 20);
+
+  /* home dashboard */
+  --sidebar_color: rgb(0, 0, 0);
+  --sidebar_border: rgb(50, 50, 50);
+  --sidebar_text: rgb(255, 255, 255);
+  --dashboard-background: rgb(0, 0, 0);
+  --dashboard-text: rgb(255, 255, 255);
+  --logout_button: rgb(200, 0, 0);
+  --card_background: rgb(50, 50, 50);
+  --table_head: rgb(50, 50, 50);
+
+}
+body {
+  background: var(--body_background);
+  color: var(--primary_text);
+
+  transition: background 0.3s ease, color 0.3s ease;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: var(--link_color);
+}
