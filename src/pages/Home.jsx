@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/home.css";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
 import api from "../api";
-import Darkmode from "../components/Darkmode";
+import Darkmode from "../components/Darkmode.jsx";
 import Sidebar from "../components/Sidebar";
 import LineChart from "../components/LineChart";
 import PieChart from "../components/PieChart";

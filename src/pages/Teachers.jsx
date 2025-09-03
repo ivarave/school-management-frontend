@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import api from "../api";
 import Sidebar from "../components/Sidebar";
-import Darkmode from "../components/Darkmode";
+import Darkmode from "../components/Darkmode.jsx";
 import "../styles/teachers.css";
 
 function Teachers() {
