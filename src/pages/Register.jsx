@@ -2,7 +2,7 @@ import { useState, useEffect, use } from "react";
 import api from "../api";
 import "../styles/register.css";
 import { Link, useNavigate } from "react-router-dom";
-import Darkmode from "../components/Darkmode.jsx";
+import Darkmode from "../components/Darkmode";
 
 
 function Register(){

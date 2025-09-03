@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import api from "../api";
 import Sidebar from "../components/Sidebar";
-import Darkmode from "../components/Darkmode.jsx";
+import Darkmode from "../components/Darkmode";
 import "../styles/subjects.css";
 
 function Subjects() {
