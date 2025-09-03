@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Sun from "./sun.svg";
+import Sun from "./Sun.svg";
 import Moon from "./moon.svg";
 import "../styles/DarkMode.css";
 
