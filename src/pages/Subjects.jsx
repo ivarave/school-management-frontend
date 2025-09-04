@@ -29,7 +29,7 @@ function Subjects() {
     } catch (err) {
       console.error(err);
       console.log(error);
-      alert("Failed to fetch subjects");
+      alert(" tch subjects");
       setLoading(false);
     }
   };
@@ -258,7 +258,7 @@ function Subjects() {
               </thead>
               <tbody>
                 {subjects
-                  .filter(sub => sub.students.includes(parseInt(userId)))
+                  .filter(sub => sub.students.includes(userId))
                   .map((sub) => (
                     <tr key={sub.id}>
                       <td>{sub.code}</td>
@@ -274,6 +274,13 @@ function Subjects() {
                       </td>
                     </tr>
                   ))}
+                {subjects.filter(sub => sub.students.includes(userId)).length === 0 && (
+                  <tr>
+                    <td colSpan="4" style={{ textAlign: "center" }}>
+                      You are not enrolled in any subjects yet.
+                    </td>
+                  </tr>
+                )}
               </tbody>
             </table>
 
@@ -289,7 +296,7 @@ function Subjects() {
               </thead>
               <tbody>
                 {subjects
-                  .filter(sub => !sub.students.includes(parseInt(userId)))
+                  .filter(sub => !sub.students.includes(userId))
                   .map((sub) => (
                     <tr key={sub.id}>
                       <td>{sub.code}</td>
@@ -305,10 +312,18 @@ function Subjects() {
                       </td>
                     </tr>
                   ))}
+                {subjects.filter(sub => !sub.students.includes(userId)).length === 0 && (
+                  <tr>
+                    <td colSpan="4" style={{ textAlign: "center" }}>
+                      No subjects available to enroll.
+                    </td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </>
         )}
+
       </main>
     </div>
   );

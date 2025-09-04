@@ -43,11 +43,11 @@ function Teachers() {
         <h2>Teachers</h2>
         <DarkMode />
 
-        <table className="subjects-table">
+        <table className="teachers-table">
           <thead>
             <tr>
               <th>No</th>
-              
+              <th>User ID</th>
               <th>First Name</th>
               <th>Last Name</th>
               <th>Email</th>
@@ -55,14 +55,13 @@ function Teachers() {
               <th>Active</th>
               <th>Hired Date</th>
               <th>Subjects</th>
-              <th>User ID</th>
             </tr>
           </thead>
           <tbody>
             {teachers.map((teacher, index) => (
               <tr key={teacher.id || index}>
                 <td>{index + 1}</td>
-            
+                <td>{teacher.user_id}</td>
                 <td>{teacher.first_name}</td>
                 <td>{teacher.last_name}</td>
                 <td>{teacher.email}</td>
@@ -74,7 +73,6 @@ function Teachers() {
                     ? teacher.subjects.join(", ")
                     : "-"}
                 </td>
-                <td>{teacher.user_id}</td>
               </tr>
             ))}
           </tbody>
